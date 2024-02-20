@@ -134,11 +134,11 @@ app.get("/bkash-callback", async (req, res) => {
           message: "Payment failed check your balance or Internet connection",
         });
         res.status(200).send(result?.statusMessage);
-        res.redirect("http://localhost:5173/dashboard");
+        res.redirect("https://dcc-eca.web.app/dashboard");
       }
       result = await executePayment(bkashConfig, paymentID);
       console.log(result, "i am here");
-      res.redirect("http://localhost:5173/profile");
+      res.redirect("https://dcc-eca.web.app/profile");
     }
 
     if (result?.transactionStatus === "Completed") {
@@ -146,12 +146,12 @@ app.get("/bkash-callback", async (req, res) => {
       // insert result in your db
       console.log(result, "complete");
     }
-    // if (result){
-    if (response.statusCode == "2023") {
-      res.redirect("http://localhost:5173/dashboard");
-    }
-    if (response.statusCode == "4000") {
-      res.redirect("http://localhost:5173/dashboard");
+    if (result) {
+      // if (response.statusCode == "2023") {
+      //   res.redirect("https://dcc-eca.web.app/dashboard");
+      // }
+      // if (response.statusCode == "4000") {
+      //   res.redirect("https://dcc-eca.web.app/dashboard");
     }
     // }
     response = {
