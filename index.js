@@ -130,7 +130,9 @@ app.get("/bkash-callback", async (req, res) => {
     };
     if (status === "success") {
       if (response.statusCode == "4000" || response.statusCode == "2023") {
-        res.status(200).send({ message: "error" });
+        res.status(200).send({
+          message: "Payment failed check your balance or Internet connection",
+        });
         res.status(200).send(result?.statusMessage);
         res.redirect("http://localhost:5173/dashboard");
       }
